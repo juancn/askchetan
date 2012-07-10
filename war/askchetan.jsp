@@ -18,5 +18,11 @@
 
   <body>
   <h1>Ask Chetan</h1>
+  <h2 id="phrase"></h2>
+  <script type="text/javascript" src="js/chetan.js"></script>
+  <script type="text/javascript">
+      var chetan = new Chetan();
+      document.getElementById('phrase').textContent = chetan.ask("");
+  </script>
   </body>
 </html>
