@@ -210,7 +210,7 @@ body {
 	width: 95%;
 	margin-bottom: 0
 }
-.full-search-bar form button[type=submit] {
+.full-search-bar form button {
 	position: absolute;
 	right: 0;
 	top: 0;
@@ -243,7 +243,7 @@ body {
 	display: block
 }
 .content-inner {
-	padding: 25px 20px 25px;
+	padding: 25px 20px 45px;
 	background-color: #fff;*zoom:1
 }
 .content-inner:before,.content-inner:after {
@@ -506,9 +506,6 @@ body {
 	border: none;
 	border-bottom: 2px solid #13161a
 }
-.content-inner {
-	padding-bottom: 20px
-}
 .header,.footer {
 	width: 97%
 }
@@ -655,7 +652,7 @@ body {
 }
 
 .full-search-bar form input[type=text],
-.full-search-bar form button[type=submit] {
+.full-search-bar form button {
 	height: 45px
 }
 .side-header {
@@ -711,5 +708,30 @@ input[type="text"],
 	margin-bottom: 2px;
 }
 
+.hidden {
+	display: none;
+}
 
+.answer-section {
+	margin: 0 3%;
+    width: 94%;
+}
+
+.answer-section .title {
+	color: #333333;
+    font-size: 20px;
+    font-weight: bold;
+	border-bottom: 1px solid #d9d9d9;
+	margin-bottom: 10px;
+}
+
+.answer {
+	font-size: 20px;
+	color: darkred;
+	padding-left: 8px;
+}
+
+.check {
+	float: left;
+}
 

@@ -12,12 +12,13 @@
 <%@ page import="com.google.appengine.api.datastore.KeyFactory" %>
 
 
+
 <html>
 	<head>
 		<title>AskChetan.com</title>
 		<link href="bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet" type="text/css" />
 		<link href="stylesheets/main.css" media="screen" rel="stylesheet" type="text/css" />
-		<script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+		<script src="http://code.jquery.com/jquery-1.8.2.min.js" type="text/javascript"></script>
 		<script type="text/javascript" src="js/chetan.js"></script>
 	</head>
 
@@ -28,16 +29,20 @@
 			</div>
 			<div class="content">
 				<div class="content-inner">
-					<h1 class="pump-up">Have a question? Ask Chetan...<br> <strong>Bam, it's that easy.</strong></h1>
+					<h1 class="pump-up">Have a question? Ask Chetan...<br> <strong>Bam! It's that easy.</strong></h1>
 					<div class="full-search-bar">
 						<ul class="item-stream unstyled search-input-stream">
 							<li class="stream-item stream-header search-input-item">
 								<form class="form-inline search-form" action="">
 									<input class="xlarge" class="question-search" id="question_search" name="q" type="text" placeholder="Do we have a plugin for..?, YUI Compressor?!?, and more..." autocomplete="off" value="" />
-									<button class="btn btn-large btn-inverse" id="question_submit" type="submit"><i class="icon-search icon-white"></i></button>
+									<button class="btn btn-large btn-inverse" id="question_submit" type="button"><i class="icon-search icon-white"></i></button>
 								</form>
 							</li>
 						</ul>
+					</div>
+					<div class="answer-section hidden">
+						<div class="title">Answer</div>
+						<img src="images/approved.png" width="28" height="28" class="check" alt="Approved"/><span class="answer">&ldquo; <span id="theAnswer" class=""></span> &rdquo;</span>
 					</div>
 				</div>
 				<div class="quote-holder">
@@ -56,7 +61,22 @@
 
 		<script type="text/javascript">
 			var chetan = new Chetan();
-			document.getElementById('phrase').textContent = chetan.ask("");
+			$('#phrase').text(chetan.ask(""));
+
+			var response;
+			$("#question_submit").click(function(){
+				var theQuestion = $("#question_search").val();
+				if(theQuestion) {
+					response = chetan.ask();
+					if(response) {
+						console.log(response);
+						$('#theAnswer').text(response);
+						$(".answer-section").show();
+						
+					}
+				}
+			})
 		</script>
 	</body>
 </html>
+
