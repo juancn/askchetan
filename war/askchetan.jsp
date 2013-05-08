@@ -45,9 +45,6 @@
 						<img src="images/approved.png" width="28" height="28" class="check" alt="Approved"/><span class="answer">&ldquo; <span id="theAnswer" class=""></span> &rdquo;</span>
 					</div>
 				</div>
-				<div class="quote-holder">
-					<span class="dixit">&ldquo; <span id="phrase"></span> &rdquo; - Chetan dixit</span>
-				</div>
 			</div>
 			<div class="footer">
 				<ul>
@@ -61,10 +58,9 @@
 
 		<script type="text/javascript">
 			var chetan = new Chetan();
-			$('#phrase').text(chetan.ask(""));
 
 			var response;
-			$("#question_submit").click(function(){
+			var doAsk = function(){
 				var theQuestion = $("#question_search").val();
 				if(theQuestion) {
 					response = chetan.ask();
@@ -72,10 +68,19 @@
 						console.log(response);
 						$('#theAnswer').text(response);
 						$(".answer-section").show();
-						
 					}
 				}
-			})
+			};
+			
+			$("#question_submit").click(doAsk);
+			$("#question_search").keypress(function(e){
+				if(e.which == 13) {
+					e.preventDefault();
+					doAsk();
+					return false;
+				}
+			});
+			
 		</script>
 	</body>
 </html>
