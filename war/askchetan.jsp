@@ -65,8 +65,11 @@
 				if(theQuestion) {
 					response = chetan.ask();
 					if(response) {
-						console.log(response);
-						$('#theAnswer').text(response);
+						if(response.indexOf("http") !== -1) {
+							$('#theAnswer').html('<a href=\"' + response + '\">' + response + '</a>');
+						} else {
+							$('#theAnswer').text(response);
+						}
 						$(".answer-section").show();
 					}
 				}
